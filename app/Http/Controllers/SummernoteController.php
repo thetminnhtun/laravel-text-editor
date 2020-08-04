@@ -82,7 +82,7 @@ class SummernoteController extends Controller
     {
         $post = Post::find($id);
         $input = $request->only('title', 'content');
-        $input['content'] = $this->uploadImage($post['content']);
+        $input['content'] = $this->uploadImage($input['content']);
         $post->update($input);
         return redirect()->route('summernote.index');
     }
@@ -111,7 +111,7 @@ class SummernoteController extends Controller
         // Enable custom element
         libxml_use_internal_errors(true);
         $dom = new \DOMDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHtml('<?xml encoding="UTF-8">'. $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
         foreach ($images as $image) {
             $src = $image->getAttribute('src');
