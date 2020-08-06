@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -14,7 +15,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::when(request('search'), function ($q) {
+            return $q->where('title', 'like', '%' . request('search') . '%');
+        })->latest()->paginate();
+        return view('trumbowyg.index', compact('posts'));
     }
 
     /**
@@ -24,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('trumbowyg.create');
     }
 
     /**
@@ -35,7 +39,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->only('title', 'content');
+        $input['content'] = $this->uploadImage($input['content']);
+        $post = Post::create($input);
+        return $post;
     }
 
     /**
@@ -44,9 +51,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('trumbowyg.show', compact('post'));
     }
 
     /**
@@ -55,9 +63,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('trumbowyg.edit', compact('post'));
     }
 
     /**
@@ -67,9 +76,13 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $input = $request->only('title', 'content');
+        $input['content'] = $this->uploadImage($input['content']);
+        $post->update($input);
+        return $post;
     }
 
     /**
@@ -78,8 +91,38 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('trumbowyg.index');
+    }
+
+    /**
+     * Upload image if content has images
+     *
+     * @param string $content
+     * @return string
+     */
+    private function uploadImage($content)
+    {
+        // Enable custom element
+        libxml_use_internal_errors(true);
+        $dom = new \DOMDocument();
+        $dom->loadHtml('<?xml encoding="UTF-8">'. $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+        foreach ($images as $image) {
+            $src = $image->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                // preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                // $mimeType = $groups['mime'];
+                $mimeType = explode('/', mime_content_type($src))[1];
+                $path = '/images/' . uniqid('', true) . '.' . $mimeType;
+                Storage::put($path, file_get_contents($src));
+                $image->removeAttribute('src');
+                $image->setAttribute('src', Storage::url($path));
+            }
+        }
+        return $dom->savehtml();
     }
 }
