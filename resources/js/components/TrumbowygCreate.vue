@@ -50,16 +50,29 @@
 </style>
 
 <script>
+// Import Trumbowyg JS
 import Trumbowyg from "vue-trumbowyg";
 // Import Trumbowyg CSS
 import "trumbowyg/dist/ui/trumbowyg.css";
-// Import Trumbowyg Plugins
+// Import Trumbowyg base64 Plugins
 import "trumbowyg/dist/plugins/base64/trumbowyg.base64.min.js";
+// Import Trumbowyg resizimg Plugins
 import "../plugins/jquery-resizable.min.js";
 import "trumbowyg/dist/plugins/resizimg/trumbowyg.resizimg.min.js";
+// Import Trumbowyg table(CSS, JS) Plugins
 import "trumbowyg/dist/plugins/table/ui/trumbowyg.table.min.css";
 import "trumbowyg/dist/plugins/table/trumbowyg.table.min.js";
+// Import Trumbowyg pasteembed Plugins
 import "trumbowyg/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js";
+// Import Trumbowyg noembed(Youtube) Plugins
+import "trumbowyg/dist/plugins/noembed/trumbowyg.noembed.js";
+// Import Trumbowyg template Plugins
+import "trumbowyg/dist/plugins/template/trumbowyg.template.min.js";
+// Import Trumbowyg pasteimage Plugins
+import "trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js";
+// Import Trumbowyg Text colors and Background colors Plugins
+import "trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css";
+import "trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js";
 
 export default {
     data() {
@@ -67,6 +80,7 @@ export default {
             title: null,
             content: null,
             config: {
+                // imageWidthModalEdit: true,
                 plugins: {
                     resizimg: {
                         minSize: 64,
@@ -74,17 +88,30 @@ export default {
                     },
                     table: {
                         // Some table plugin options, see details below
+                    },
+                    templates: [
+                        {
+                            name: 'Template 1',
+                            html: '<p>I am a template!</p>'
+                        },
+                    ]
+                },
+                btnsDef: {
+                    image: {
+                        dropdown: ['insertImage', 'base64', "noembed"],
+                        ico: 'insertImage'
                     }
                 },
                 btns: [
                     ["viewHTML"],
+                    ["template"],
                     ["undo", "redo"], // Only supported in Blink browsers
                     ["formatting"],
                     ["strong", "em", "del"],
-                    ["superscript", "subscript"],
+                    ['foreColor', 'backColor'],
+                    // ["superscript", "subscript"],
                     ["link"],
-                    ["insertImage"],
-                    ["base64"],
+                    ["image"],
                     ["table"],
                     ["pasteembed"],
                     [
@@ -95,7 +122,7 @@ export default {
                     ],
                     ["unorderedList", "orderedList"],
                     ["horizontalRule"],
-                    ["removeformat"],
+                    // ["removeformat"],
                     ["fullscreen"]
                 ]
                 // Get options from

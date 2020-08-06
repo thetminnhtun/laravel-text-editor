@@ -1974,6 +1974,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var trumbowyg_dist_plugins_table_trumbowyg_table_min_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_table_trumbowyg_table_min_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var trumbowyg_dist_plugins_pasteembed_trumbowyg_pasteembed_min_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! trumbowyg/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js */ "./node_modules/trumbowyg/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js");
 /* harmony import */ var trumbowyg_dist_plugins_pasteembed_trumbowyg_pasteembed_min_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_pasteembed_trumbowyg_pasteembed_min_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var trumbowyg_dist_plugins_noembed_trumbowyg_noembed_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! trumbowyg/dist/plugins/noembed/trumbowyg.noembed.js */ "./node_modules/trumbowyg/dist/plugins/noembed/trumbowyg.noembed.js");
+/* harmony import */ var trumbowyg_dist_plugins_noembed_trumbowyg_noembed_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_noembed_trumbowyg_noembed_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var trumbowyg_dist_plugins_template_trumbowyg_template_min_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! trumbowyg/dist/plugins/template/trumbowyg.template.min.js */ "./node_modules/trumbowyg/dist/plugins/template/trumbowyg.template.min.js");
+/* harmony import */ var trumbowyg_dist_plugins_template_trumbowyg_template_min_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_template_trumbowyg_template_min_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var trumbowyg_dist_plugins_pasteimage_trumbowyg_pasteimage_min_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js */ "./node_modules/trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js");
+/* harmony import */ var trumbowyg_dist_plugins_pasteimage_trumbowyg_pasteimage_min_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_pasteimage_trumbowyg_pasteimage_min_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var trumbowyg_dist_plugins_colors_ui_trumbowyg_colors_min_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css */ "./node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css");
+/* harmony import */ var trumbowyg_dist_plugins_colors_ui_trumbowyg_colors_min_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_colors_ui_trumbowyg_colors_min_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var trumbowyg_dist_plugins_colors_trumbowyg_colors_min_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js */ "./node_modules/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js");
+/* harmony import */ var trumbowyg_dist_plugins_colors_trumbowyg_colors_min_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_colors_trumbowyg_colors_min_js__WEBPACK_IMPORTED_MODULE_12__);
 //
 //
 //
@@ -2025,13 +2035,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+// Import Trumbowyg JS
  // Import Trumbowyg CSS
 
- // Import Trumbowyg Plugins
+ // Import Trumbowyg base64 Plugins
+
+ // Import Trumbowyg resizimg Plugins
 
 
+ // Import Trumbowyg table(CSS, JS) Plugins
 
 
+ // Import Trumbowyg pasteembed Plugins
+
+ // Import Trumbowyg noembed(Youtube) Plugins
+
+ // Import Trumbowyg template Plugins
+
+ // Import Trumbowyg pasteimage Plugins
+
+ // Import Trumbowyg Text colors and Background colors Plugins
 
 
 
@@ -2041,16 +2064,29 @@ __webpack_require__.r(__webpack_exports__);
       title: null,
       content: null,
       config: {
+        // imageWidthModalEdit: true,
         plugins: {
           resizimg: {
             minSize: 64,
             step: 16
           },
           table: {// Some table plugin options, see details below
+          },
+          templates: [{
+            name: 'Template 1',
+            html: '<p>I am a template!</p>'
+          }]
+        },
+        btnsDef: {
+          image: {
+            dropdown: ['insertImage', 'base64', "noembed"],
+            ico: 'insertImage'
           }
         },
-        btns: [["viewHTML"], ["undo", "redo"], // Only supported in Blink browsers
-        ["formatting"], ["strong", "em", "del"], ["superscript", "subscript"], ["link"], ["insertImage"], ["base64"], ["table"], ["pasteembed"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"], ["unorderedList", "orderedList"], ["horizontalRule"], ["removeformat"], ["fullscreen"]] // Get options from
+        btns: [["viewHTML"], ["template"], ["undo", "redo"], // Only supported in Blink browsers
+        ["formatting"], ["strong", "em", "del"], ['foreColor', 'backColor'], // ["superscript", "subscript"],
+        ["link"], ["image"], ["table"], ["pasteembed"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"], ["unorderedList", "orderedList"], ["horizontalRule"], // ["removeformat"],
+        ["fullscreen"]] // Get options from
         // https://alex-d.github.io/Trumbowyg/documentation
 
       }
@@ -2100,6 +2136,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var trumbowyg_dist_plugins_table_trumbowyg_table_min_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_table_trumbowyg_table_min_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var trumbowyg_dist_plugins_pasteembed_trumbowyg_pasteembed_min_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! trumbowyg/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js */ "./node_modules/trumbowyg/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js");
 /* harmony import */ var trumbowyg_dist_plugins_pasteembed_trumbowyg_pasteembed_min_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_pasteembed_trumbowyg_pasteembed_min_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var trumbowyg_dist_plugins_noembed_trumbowyg_noembed_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! trumbowyg/dist/plugins/noembed/trumbowyg.noembed.js */ "./node_modules/trumbowyg/dist/plugins/noembed/trumbowyg.noembed.js");
+/* harmony import */ var trumbowyg_dist_plugins_noembed_trumbowyg_noembed_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_noembed_trumbowyg_noembed_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var trumbowyg_dist_plugins_template_trumbowyg_template_min_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! trumbowyg/dist/plugins/template/trumbowyg.template.min.js */ "./node_modules/trumbowyg/dist/plugins/template/trumbowyg.template.min.js");
+/* harmony import */ var trumbowyg_dist_plugins_template_trumbowyg_template_min_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_template_trumbowyg_template_min_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var trumbowyg_dist_plugins_pasteimage_trumbowyg_pasteimage_min_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js */ "./node_modules/trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js");
+/* harmony import */ var trumbowyg_dist_plugins_pasteimage_trumbowyg_pasteimage_min_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_pasteimage_trumbowyg_pasteimage_min_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var trumbowyg_dist_plugins_colors_ui_trumbowyg_colors_min_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css */ "./node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css");
+/* harmony import */ var trumbowyg_dist_plugins_colors_ui_trumbowyg_colors_min_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_colors_ui_trumbowyg_colors_min_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var trumbowyg_dist_plugins_colors_trumbowyg_colors_min_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js */ "./node_modules/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js");
+/* harmony import */ var trumbowyg_dist_plugins_colors_trumbowyg_colors_min_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(trumbowyg_dist_plugins_colors_trumbowyg_colors_min_js__WEBPACK_IMPORTED_MODULE_12__);
 //
 //
 //
@@ -2151,33 +2197,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+// Import Trumbowyg JS
  // Import Trumbowyg CSS
 
- // Import Trumbowyg Plugins
+ // Import Trumbowyg base64 Plugins
+
+ // Import Trumbowyg resizimg Plugins
 
 
+ // Import Trumbowyg table(CSS, JS) Plugins
 
 
+ // Import Trumbowyg pasteembed Plugins
+
+ // Import Trumbowyg noembed(Youtube) Plugins
+
+ // Import Trumbowyg template Plugins
+
+ // Import Trumbowyg pasteimage Plugins
+
+ // Import Trumbowyg Text colors and Background colors Plugins
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['post'],
+  props: ["post"],
   data: function data() {
     return {
       title: null,
       content: null,
       config: {
+        // imageWidthModalEdit: true,
         plugins: {
           resizimg: {
             minSize: 64,
             step: 16
           },
           table: {// Some table plugin options, see details below
+          },
+          templates: [{
+            name: "Template 1",
+            html: "<p>I am a template!</p>"
+          }]
+        },
+        btnsDef: {
+          image: {
+            dropdown: ["insertImage", "base64", "noembed"],
+            ico: "insertImage"
           }
         },
-        btns: [["viewHTML"], ["undo", "redo"], // Only supported in Blink browsers
-        ["formatting"], ["strong", "em", "del"], ["superscript", "subscript"], ["link"], ["insertImage"], ["base64"], ["table"], ["pasteembed"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"], ["unorderedList", "orderedList"], ["horizontalRule"], ["removeformat"], ["fullscreen"]] // Get options from
+        btns: [["viewHTML"], ["template"], ["undo", "redo"], // Only supported in Blink browsers
+        ["formatting"], ["strong", "em", "del"], ["foreColor", "backColor"], // ["superscript", "subscript"],
+        ["link"], ["image"], ["table"], ["pasteembed"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"], ["unorderedList", "orderedList"], ["horizontalRule"], // ["removeformat"],
+        ["fullscreen"]] // Get options from
         // https://alex-d.github.io/Trumbowyg/documentation
 
       }
@@ -2192,7 +2266,7 @@ __webpack_require__.r(__webpack_exports__);
         title: this.post.title,
         content: this.post.content
       }).then(function (res) {
-        return window.location.replace('/trumbowyg');
+        return window.location.replace("/trumbowyg");
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -6618,6 +6692,25 @@ __webpack_require__.r(__webpack_exports__);
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css ***!
+  \****************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/** Trumbowyg v2.21.0 - A lightweight WYSIWYG editor - alex-d.github.io/Trumbowyg - License MIT - Author : Alexandre Demode (Alex-D) / alex-d.fr */\n.trumbowyg-dropdown-backColor:not(.trumbowyg-dropdown--color-list),.trumbowyg-dropdown-foreColor:not(.trumbowyg-dropdown--color-list){max-width:276px;padding:7px 5px;overflow:initial}.trumbowyg-dropdown-backColor:not(.trumbowyg-dropdown--color-list) button,.trumbowyg-dropdown-foreColor:not(.trumbowyg-dropdown--color-list) button{display:block;position:relative;float:left;text-indent:-9999px;height:20px;width:20px;border:1px solid #333;padding:0;margin:2px}.trumbowyg-dropdown-backColor:not(.trumbowyg-dropdown--color-list) button:focus::after,.trumbowyg-dropdown-backColor:not(.trumbowyg-dropdown--color-list) button:hover::after,.trumbowyg-dropdown-foreColor:not(.trumbowyg-dropdown--color-list) button:focus::after,.trumbowyg-dropdown-foreColor:not(.trumbowyg-dropdown--color-list) button:hover::after{content:\" \";display:block;position:absolute;top:-5px;left:-5px;width:27px;height:27px;background:inherit;border:1px solid #fff;box-shadow:#000 0 0 2px;z-index:10}.trumbowyg-dropdown-backColor.trumbowyg-dropdown--color-list button:not(.trumbowyg-backColorRemove-dropdown-button){position:relative;color:#fff!important}.trumbowyg-dropdown-backColor.trumbowyg-dropdown--color-list button:not(.trumbowyg-backColorRemove-dropdown-button):focus::after,.trumbowyg-dropdown-backColor.trumbowyg-dropdown--color-list button:not(.trumbowyg-backColorRemove-dropdown-button):hover::after{content:\" \";display:block;position:absolute;top:13px;left:0;width:0;height:0;border:5px solid transparent;border-left-color:#fff}", ""]);
+
+// exports
 
 
 /***/ }),
@@ -38512,6 +38605,179 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+!function(o){"use strict";function r(o){return("0"+parseInt(o).toString(16)).slice(-2)}function e(o){return o.search("rgb")===-1?o.replace("#",""):"rgba(0, 0, 0, 0)"===o?"transparent":(o=o.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/),r(o[1])+r(o[2])+r(o[3]))}function l(o,r){var l=[];if(!o.style)return l;if(""!==o.style.backgroundColor){var a=e(o.style.backgroundColor);r.o.plugins.colors.colorList.indexOf(a)>=0?l.push("backColor"+a):l.push("backColorFree")}var c;return""!==o.style.color?c=e(o.style.color):o.hasAttribute("color")&&(c=e(o.getAttribute("color"))),c&&(r.o.plugins.colors.colorList.indexOf(c)>=0?l.push("foreColor"+c):l.push("foreColorFree")),l}function a(r,e){var l=[],a=e.o.plugins.colors,c=a[r+"List"]||a.colorList;o.each(c,function(o,c){var f=r+c,t={fn:r,forceCss:!0,hasIcon:!1,text:e.lang["#"+c]||"#"+c,param:"#"+c,style:"background-color: #"+c+";"};a.displayAsList&&"foreColor"===r&&(t.style="color: #"+c+" !important;"),e.addBtnDef(f,t),l.push(f)});var f=r+"Remove",t={fn:"removeFormat",hasIcon:!1,param:r,style:"background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkQAAfEJMRmwBYhoGBYQtMBYoAADziAp0jtJTgAAAAAElFTkSuQmCC);"};if(a.displayAsList&&(t.style=""),e.addBtnDef(f,t),l.push(f),a["allowCustom"+r.charAt(0).toUpperCase()+r.substr(1)]){var d=r+"Free",n={fn:function(){e.openModalInsert(e.lang[r],{color:{label:r,forceCss:!0,type:"color",value:"#FFFFFF"}},function(o){return e.execCmd(r,o.color),!0})},hasIcon:!1,text:"#",style:"text-indent: 0; line-height: 20px; padding: 0 5px;"};e.addBtnDef(d,n),l.push(d)}return l}o.extend(!0,o.trumbowyg,{langs:{cs:{foreColor:"Barva textu",backColor:"Barva pozadí"},en:{foreColor:"Text color",backColor:"Background color",foreColorRemove:"Remove text color",backColorRemove:"Remove background color"},da:{foreColor:"Tekstfarve",backColor:"Baggrundsfarve"},fr:{foreColor:"Couleur du texte",backColor:"Couleur de fond",foreColorRemove:"Supprimer la couleur du texte",backColorRemove:"Supprimer la couleur de fond"},de:{foreColor:"Textfarbe",backColor:"Hintergrundfarbe"},nl:{foreColor:"Tekstkleur",backColor:"Achtergrondkleur"},sk:{foreColor:"Farba textu",backColor:"Farba pozadia"},zh_cn:{foreColor:"文字颜色",backColor:"背景颜色"},zh_tw:{foreColor:"文字顏色",backColor:"背景顏色"},ru:{foreColor:"Цвет текста",backColor:"Цвет выделения текста"},ja:{foreColor:"文字色",backColor:"背景色"},tr:{foreColor:"Yazı rengi",backColor:"Arkaplan rengi"},pt_br:{foreColor:"Cor de fonte",backColor:"Cor de fundo"},ko:{foreColor:"글자색",backColor:"배경색",foreColorRemove:"글자색 지우기",backColorRemove:"배경색 지우기"}}});var c={colorList:["ffffff","000000","eeece1","1f497d","4f81bd","c0504d","9bbb59","8064a2","4bacc6","f79646","ffff00","f2f2f2","7f7f7f","ddd9c3","c6d9f0","dbe5f1","f2dcdb","ebf1dd","e5e0ec","dbeef3","fdeada","fff2ca","d8d8d8","595959","c4bd97","8db3e2","b8cce4","e5b9b7","d7e3bc","ccc1d9","b7dde8","fbd5b5","ffe694","bfbfbf","3f3f3f","938953","548dd4","95b3d7","d99694","c3d69b","b2a2c7","b7dde8","fac08f","f2c314","a5a5a5","262626","494429","17365d","366092","953734","76923c","5f497a","92cddc","e36c09","c09100","7f7f7f","0c0c0c","1d1b10","0f243e","244061","632423","4f6128","3f3151","31859b","974806","7f6000"],foreColorList:null,backColorList:null,allowCustomForeColor:!0,allowCustomBackColor:!0,displayAsList:!1};o.extend(!0,o.trumbowyg,{plugins:{color:{init:function(o){o.o.plugins.colors=o.o.plugins.colors||c;var r=o.o.plugins.colors.displayAsList?o.o.prefix+"dropdown--color-list":"",e={dropdown:a("foreColor",o),dropdownClass:r},l={dropdown:a("backColor",o),dropdownClass:r};o.addBtnDef("foreColor",e),o.addBtnDef("backColor",l)},tagHandler:l}}})}(jQuery);
+
+/***/ }),
+
+/***/ "./node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css":
+/*!********************************************************************************!*\
+  !*** ./node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../css-loader??ref--6-1!../../../../../postcss-loader/src??ref--6-2!./trumbowyg.colors.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/trumbowyg/dist/plugins/noembed/trumbowyg.noembed.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/trumbowyg/dist/plugins/noembed/trumbowyg.noembed.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* ===========================================================
+ * trumbowyg.noembed.js v1.0
+ * noEmbed plugin for Trumbowyg
+ * http://alex-d.github.com/Trumbowyg
+ * ===========================================================
+ * Author : Jake Johns (jakejohns)
+ */
+
+(function ($) {
+    'use strict';
+
+    var defaultOptions = {
+        proxy: 'https://noembed.com/embed?nowrap=on',
+        urlFiled: 'url',
+        data: [],
+        success: undefined,
+        error: undefined
+    };
+
+    $.extend(true, $.trumbowyg, {
+        langs: {
+            // jshint camelcase:false
+            en: {
+                noembed: 'Noembed',
+                noembedError: 'Error'
+            },
+            da: {
+                noembedError: 'Fejl'
+            },
+            sk: {
+                noembedError: 'Chyba'
+            },
+            fr: {
+                noembedError: 'Erreur'
+            },
+            cs: {
+                noembedError: 'Chyba'
+            },
+            ru: {
+                noembedError: 'Ошибка'
+            },
+            ja: {
+                noembedError: 'エラー'
+            },
+            tr: {
+                noembedError: 'Hata'
+            },
+            zh_tw: {
+                noembed: '插入影片',
+                noembedError: '錯誤'
+            },
+            pt_br: {
+                noembed: 'Incorporar',
+                noembedError: 'Erro'
+            },
+            ko: {
+                noembed: 'oEmbed 넣기',
+                noembedError: '에러'
+            },
+            // jshint camelcase:true
+        },
+
+        plugins: {
+            noembed: {
+                init: function (trumbowyg) {
+                    trumbowyg.o.plugins.noembed = $.extend(true, {}, defaultOptions, trumbowyg.o.plugins.noembed || {});
+
+                    var btnDef = {
+                        fn: function () {
+                            var $modal = trumbowyg.openModalInsert(
+                                // Title
+                                trumbowyg.lang.noembed,
+
+                                // Fields
+                                {
+                                    url: {
+                                        label: 'URL',
+                                        required: true
+                                    }
+                                },
+
+                                // Callback
+                                function (data) {
+                                    $.ajax({
+                                        url: trumbowyg.o.plugins.noembed.proxy,
+                                        type: 'GET',
+                                        data: data,
+                                        cache: false,
+                                        dataType: 'json',
+
+                                        success: trumbowyg.o.plugins.noembed.success || function (data) {
+                                            if (data.html) {
+                                                trumbowyg.execCmd('insertHTML', data.html);
+                                                setTimeout(function () {
+                                                    trumbowyg.closeModal();
+                                                }, 250);
+                                            } else {
+                                                trumbowyg.addErrorOnModalField(
+                                                    $('input[type=text]', $modal),
+                                                    data.error
+                                                );
+                                            }
+                                        },
+                                        error: trumbowyg.o.plugins.noembed.error || function () {
+                                            trumbowyg.addErrorOnModalField(
+                                                $('input[type=text]', $modal),
+                                                trumbowyg.lang.noembedError
+                                            );
+                                        }
+                                    });
+                                }
+                            );
+                        }
+                    };
+
+                    trumbowyg.addBtnDef('noembed', btnDef);
+                }
+            }
+        }
+    });
+})(jQuery);
+
+
+/***/ }),
+
 /***/ "./node_modules/trumbowyg/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js":
 /*!************************************************************************************!*\
   !*** ./node_modules/trumbowyg/dist/plugins/pasteembed/trumbowyg.pasteembed.min.js ***!
@@ -38520,6 +38786,17 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports) {
 
 !function(t){"use strict";var e={enabled:!0,endpoints:["https://noembed.com/embed?nowrap=on","https://api.maxmade.nl/url2iframe/embed"]};t.extend(!0,t.trumbowyg,{plugins:{pasteEmbed:{init:function(n){n.o.plugins.pasteEmbed=t.extend(!0,{},e,n.o.plugins.pasteEmbed||{}),n.o.plugins.pasteEmbed.enabled&&n.pasteHandlers.push(function(e){try{var a=(e.originalEvent||e).clipboardData,r=a.getData("Text"),s=n.o.plugins.pasteEmbed.endpoints,i=null;if(r.startsWith("http")){e.stopPropagation(),e.preventDefault();var o={url:r.trim()},p="",l=0;i&&i.transport&&i.transport.abort(),i=t.ajax({crossOrigin:!0,url:s[l],type:"GET",data:o,cache:!1,dataType:"jsonp",success:function(t){t.html?(l=0,p=t.html):l+=1},error:function(){l+=1},complete:function(){0===p.length&&l<s.length-1&&(this.url=s[l],this.data=o,t.ajax(this)),l===s.length-1&&(p=t("<a>",{href:r,text:r}).prop("outerHTML")),p.length>0&&(l=0,n.execCmd("insertHTML",p))}})}}catch(u){}})}}}})}(jQuery);
+
+/***/ }),
+
+/***/ "./node_modules/trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+!function(e){"use strict";e.extend(!0,e.trumbowyg,{plugins:{pasteImage:{init:function(e){e.pasteHandlers.push(function(t){try{for(var a,n=(t.originalEvent||t).clipboardData.items,i=!1,r=n.length-1;r>=0;r-=1)n[r].type.match(/^image\//)&&(a=new FileReader,a.onloadend=function(t){e.execCmd("insertImage",t.target.result,!1,!0)},a.readAsDataURL(n[r].getAsFile()),i=!0);i&&(t.stopPropagation(),t.preventDefault())}catch(o){}})}}}})}(jQuery);
 
 /***/ }),
 
@@ -38572,6 +38849,17 @@ var update = __webpack_require__(/*! ../../../../../style-loader/lib/addStyles.j
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/trumbowyg/dist/plugins/template/trumbowyg.template.min.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/trumbowyg/dist/plugins/template/trumbowyg.template.min.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+!function(t){"use strict";function e(e){var n=e.o.plugins.templates,a=[];return t.each(n,function(t,n){e.addBtnDef("template_"+t,{fn:function(){e.html(n.html)},hasIcon:!1,title:n.name}),a.push("template_"+t)}),a}t.extend(!0,t.trumbowyg,{langs:{en:{template:"Template"},da:{template:"Skabelon"},de:{template:"Vorlage"},fr:{template:"Patron"},ja:{template:"テンプレート"},ko:{template:"서식"},nl:{template:"Sjabloon"},pt_br:{template:"Modelo"},ru:{template:"Шаблон"},tr:{template:"Şablon"},zh_tw:{template:"模板"}}}),t.extend(!0,t.trumbowyg,{plugins:{template:{shouldInit:function(t){return t.o.plugins.hasOwnProperty("templates")},init:function(t){t.addBtnDef("template",{dropdown:e(t),hasIcon:!1,text:t.lang.template})}}}})}(jQuery);
 
 /***/ }),
 
