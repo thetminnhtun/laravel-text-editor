@@ -11,13 +11,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/img/logo.png" sizes="180x180">
-    <link rel="icon" href="/img/logo.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="/images/logo.png" sizes="180x180">
+    <link rel="icon" href="/images/logo.png" sizes="16x16" type="image/png">
     <meta name="theme-color" content="#fff">
 
     <title>@yield('title', 'Text Editor')</title>
     <!-- Theme style -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <style>
@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                <img src="/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
                 <span class="brand-text font-weight-light">Text Editor</span>
             </a>
@@ -62,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="/img/avatar/user.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="/images/avatar/user.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Admin</a>
@@ -149,7 +149,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
-    <script src="/js/app.js"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
     @yield('script')
 </body>
 

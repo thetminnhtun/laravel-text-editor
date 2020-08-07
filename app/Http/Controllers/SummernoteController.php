@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\SummernoteStoreRequest;
-use App\Http\Requests\SummernoteUpdateRequest;
 
 class SummernoteController extends Controller
 {
@@ -39,7 +37,7 @@ class SummernoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SummernoteStoreRequest $request)
+    public function store(PostRequest $request)
     {
         $input = $request->only('title', 'content');
         $input['content'] = $this->uploadImage($input['content']);
@@ -78,7 +76,7 @@ class SummernoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SummernoteUpdateRequest $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $post = Post::find($id);
         $input = $request->only('title', 'content');

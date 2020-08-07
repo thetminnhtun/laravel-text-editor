@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Post;
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -15,20 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::when(request('search'), function ($q) {
+        return Post::when(request('search'), function ($q) {
             return $q->where('title', 'like', '%' . request('search') . '%');
         })->latest()->paginate();
-        return view('trumbowyg.index', compact('posts'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('trumbowyg.create');
     }
 
     /**
@@ -37,7 +27,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $input = $request->only('title', 'content');
         $input['content'] = $this->uploadImage($input['content']);
@@ -51,22 +41,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
-        return view('trumbowyg.show', compact('post'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $post = Post::find($id);
-        return view('trumbowyg.edit', compact('post'));
+        return $post;
     }
 
     /**
@@ -76,9 +53,8 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        $post = Post::find($id);
         $input = $request->only('title', 'content');
         $input['content'] = $this->uploadImage($input['content']);
         $post->update($input);
@@ -91,15 +67,14 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::find($id);
         $post->delete();
-        return redirect()->route('trumbowyg.index');
+        return $post;
     }
 
     /**
-     * Upload image if content has images
+     * Upload image if content has images.
      *
      * @param string $content
      * @return string
@@ -109,7 +84,7 @@ class PostController extends Controller
         // Enable custom element
         libxml_use_internal_errors(true);
         $dom = new \DOMDocument();
-        $dom->loadHtml('<?xml encoding="UTF-8">'. $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHtml('<?xml encoding="UTF-8">' . $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
         foreach ($images as $image) {
             $src = $image->getAttribute('src');
